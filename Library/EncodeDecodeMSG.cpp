@@ -8,15 +8,15 @@ uint16_t EncodeMessage(Message msg){
 	//add data
 	emsg |= msg.data << 6;
 	
-	//control bits
-	for(int i = 0; i < 4; i++){
+	// 5 control bits
+	for(int i = 0; i < 5; i++){
 		//store te relevant bits
 		bool bit1 = (emsg >> (1+i)) & 1;
 		bool bit2 = (emsg >> (6+i)) & 1;
 		//XOR
 		bool tmp = bit1 ^ bit2;
 		//add XOR bit to encodedmessage
-		emsg |= tmp << (12+i);
+		emsg |= tmp << (11+i);
 	}
 	
 	return emsg;
@@ -24,10 +24,10 @@ uint16_t EncodeMessage(Message msg){
 
 Message DecodeMessage(uint16_t encodedMessage){
 	Message msg;
-	//player bits(5)
+	// 5 player bits
 	msg.senderID = (encodedMessage >> 1) & 0x001f;
-	//data bits(6)
-	msg.data = (encodedMessage >> 6) & 0x003f;
+	// 5 data bits
+	msg.data = (encodedMessage >> 6) & 0x001f;
 	
 	return msg;
 }
