@@ -7,14 +7,17 @@
 //Testing
 
 int main(void){
+	auto coder = EncodeDecodeMSG();
+	
 	Message start = Message();
-	start.data = 5;
-	start.senderID = 10;
+	start.data = 20;
+	start.senderID = 9;
 	
 	//encoding
-	uint16_t encodedmsg = EncodeMessage(start);
+	uint16_t encodedmsg = coder.EncodeMessage(start);
 	
+	std::cout<< std::bitset<16>(encodedmsg) << std::endl;
 	//decoding
-	Message decoded = DecodeMessage(encodedmsg);
-	std::cout << decoded.data <<"	"<<  decoded.senderID << std::endl;
+	Message decoded = coder.DecodeMessage(encodedmsg);
+	std::cout << int(decoded.data) <<"	"<<  int(decoded.senderID) << std::endl;
 }
