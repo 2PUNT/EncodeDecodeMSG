@@ -1,6 +1,6 @@
 #include "EncodeDecodeMSG.hpp"
 
-uint16_t EncodeMessage(Message msg){
+uint16_t EncodeDecodeMSG::EncodeMessage(Message msg){
 	//start with startbit
 	uint16_t emsg = 0x0001;
 	//add playerid
@@ -22,7 +22,7 @@ uint16_t EncodeMessage(Message msg){
 	return emsg;
 }
 
-Message DecodeMessage(uint16_t encodedMessage){
+Message EncodeDecodeMSG::DecodeMessage(uint16_t encodedMessage){
 	Message msg;
 	// 5 player bits
 	msg.senderID = (encodedMessage >> 1) & 0x001f;

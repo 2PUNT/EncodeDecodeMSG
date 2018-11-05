@@ -3,8 +3,16 @@
 #include "message.hpp"
 #include <stdint.h>
 
-uint16_t EncodeMessage(Message msg);
+class EncodeDecodeMSG{
+public:
+	EncodeDecodeMSG(){};
+	
+	uint16_t EncodeMessage(Message msg);
+	Message DecodeMessage(uint16_t encodedMessage);
+};
 
-Message DecodeMessage(uint16_t encodedMessage);
+
+
+
 
 #endif
