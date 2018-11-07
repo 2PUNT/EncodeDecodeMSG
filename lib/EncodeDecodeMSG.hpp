@@ -1,6 +1,7 @@
 #ifndef _ENCODE_DECODE_MSG
 #define _ENCODE_DECODE_MSG
-#include "message.hpp"
+//#include "message.hpp"
+#include "ADTs.hpp"
 #include <stdint.h>
 
 class EncodeDecodeMSG{
