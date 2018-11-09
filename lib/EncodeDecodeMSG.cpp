@@ -9,16 +9,8 @@ uint16_t EncodeDecodeMSG::EncodeMessage(Message msg){
 	emsg |= msg.data << 6;
 	
 	// 5 control bits
-	for(int i = 0; i < 5; i++){
-		//store te relevant bits
-		bool bit1 = (emsg >> (1+i)) & 1;
-		bool bit2 = (emsg >> (6+i)) & 1;
-		//XOR
-		bool tmp = bit1 ^ bit2;
-		//add XOR bit to encodedmessage
-		emsg |= tmp << (11+i);
-	}
 	
+	emsg |= ((msg.senderID ^ msg.data) << 11);
 	return emsg;
 }
 
