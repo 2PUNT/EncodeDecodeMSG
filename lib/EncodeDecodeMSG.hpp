@@ -16,6 +16,7 @@ public:
     ///@details This method encodes a @c Message object and returns the encoded message.
 	///@param msg The message to encode.
 	///@return emsg The encoded message.
+	uint16_t EncodeMessage(Message msg);
 	
 	///@fn EncodeDecodeMSG::DecodeMessage(uint16_t encodedMessage)
     ///@brief Decodes a message.
